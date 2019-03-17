@@ -4,8 +4,6 @@ from tkinter import ttk # Theme Widgits from tk
 from tkinter import messagebox as mbx
 from tkinter import Widget as tkw
 
-import qrt_codinglib as algo
-
 
 def proc_load(Fields):
          mbx.showinfo("Loading")

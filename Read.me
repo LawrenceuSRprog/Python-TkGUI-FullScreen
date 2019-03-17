@@ -1,71 +1,42 @@
+Look at Driver program:
 
-Before considring the new class for listbox handling. The thinking behind
-radio-buttons could probably be more generalized.
+Now complete integration between the Extra File and what is left
+===> The clue is in the popup msgs when it is run DEFAULT     
 
-########### Radio Button Handling #######
 
-	The {existing structure} ASSUMES these points -
-       	a. Value-returned/modifed is an intvar so it looks like an integer
-       	b. The index implied by <a> is ALLWAYS {ONE based}
-	       c. A label in the same sub-frame takes up the whole of row-zero
-	   
-===> We can avoid inheriting from subframe by {sticking to}:
-	     1. 
 
-##### Most Important #####
-Work with this code:
-
-> import collections
-> ordered_dict = collections.OrderedDict()
-> ordered_dict['1'] = "one"
-> ordered_dict['2'] = "two"
-
-ordered_dict['3'] = "three"
-ordered_dict['4'] = "four"
-ordered_dict['5'] = "five"
- > print("Printing Ordered Dictionary : ">")fo
- > for key,value in ordered_dict.items(): 
- >   print("key : {0},value : {1}".format(key,value)
-
-##### Everything Else ####
-
-Within Subframe_obj  There is: [ ret_text=tk.StringVar() ]
-What we need is [ ret_box = SinglelboVar() ]
-
-   Just as StringVar() has public get and put
-   so SinglelboVar() Needs the same
+The production of grandpa and parent WITHIN the new
+   target which is a sub class of ListBox is WRONG.
    
-Init of SinglelboVar:
-       Optional param (defaults to None)
-             for coded values to replace zero based Index
-             
- ======== Within Alternative corners=========
- 
- def make_corner_singleListbox(cur_frame,Fields):
-          cur_frame.ldc_rowlabel(pcaption= "Cust clothing",prow=0)
-          Fields["page_clothes"]=\
-          cur_frame.ldc_singlebox(["socks","shoes","shirt","gloves","hat"])
-          
-======= Within Subframe_object library ======
+   
+In the 1st place, the <tileframe> exists anyway. After
+processing the Caption. The prog can calculate the size
 
-class Subframe_builder(tk.Frame):
-	def __init__(self,parent_window,req_bg="yellow"):
-		super().__init__()
-		self["height"]=200 .... What ever !
-		
-======== Within qrt_driver The program Main ====
+& position of the <innerframe>. Before finishing this
 
-frb_red=sbf.Subframe_builder(myWindow,"red")
-corn.make_corner_singleListbox(frb_red,Fields)
+part of the project, everything will be validated
+according to {List to Show} below.
+   
 
 
+Thus the pseudo-code INSIDE {ldc_singlebox} must be:
+1)  Assign name <tileframe> to the {current subframe}
+2)  Attempt Caption_Title in TLHC of <tileframe>
+3)  calc {inner size} wrt <2> and bodytext font
+4)  Create <innerframe> as child of <tileframe> wrt <3>
+5)  Place <innerframe> wrt size of <4>
+6)  For Now just have a dialog box including {List To Show}
 
 
- 
-             
+List To Show
+============
+Caption or {No Caption}
+TileFrame ===> width and height
+InnerFrame ===> width and height
+Place ======> parameters
 
 
-
-
-
-
+All very nice BUT class Subframe_builder(tk.Frame):
+    def __init__(self,parent_window,frame_target,allow_inner=False)
+    
+    ===> When redFrame is created it needs an extra parameter.

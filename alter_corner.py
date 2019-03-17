@@ -4,7 +4,7 @@ import tkinter as tk
 from tkinter import ttk # Theme Widgits from tk
 from tkinter import messagebox as mbx
 from tkinter import Widget as tkw
-import alter_corner as corn # Alternative corners Lines 48 and
+import alter_corner as corn 
 import Subframe_obj as sbf
 
 def make_corner_textEntry(cur_frame,Fields):
